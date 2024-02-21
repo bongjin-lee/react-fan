@@ -6,12 +6,12 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export default function Router() {
-  const [fanLogin, setFanLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
   
   return (
     <BrowserRouter>
       <Routes>
-       {fanLogin ? (
+       {isLogin ? (
        <>
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
