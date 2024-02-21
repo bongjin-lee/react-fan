@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import Button from "components/common/Button";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { login } from "redux/modules/authSlice";
 
 export default function Login() {
+  const dispatch = useDispatch();
   const [isLoginMode, setIsLoginMode] = useState(false);
-  const [formState, setFormState] = useState({
+  const initaliState = {
     id: "",
     password: "",
     nickname: "",
-  });
+  };
+  const [formState, setFormState] = useState(initaliState)
   const { id, password, nickname } = formState;
   // console.log("id", id);
   // console.log("password", password);
@@ -22,8 +26,13 @@ export default function Login() {
     event.preventDefalut();
     if (isLoginMode) {
       // 로그인처리
+      dispatch(login());
+      alert("로그인 성공");
     } else {
       // 회원가입
+      setIsLoginMode(true);
+      setFormState(initaliState);
+      alert("회원가입 성공");
     }
   };
 
