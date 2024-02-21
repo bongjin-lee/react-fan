@@ -1,5 +1,5 @@
-import letters from "redux/modules/letters";
-import member from "redux/modules/member";
+import letters from "redux/modules/letterSlice";
+import member from "redux/modules/memberSlice";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
