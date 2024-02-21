@@ -6,7 +6,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export default function Router() {
-  const [fanLogin, setFanLogin] = useState(false);
+  const [fanLogin, setFanLogin] = useState(true);
   
   return (
     <BrowserRouter>
