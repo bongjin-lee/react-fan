@@ -3,36 +3,43 @@ import Button from "components/common/Button";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { login } from "redux/modules/authSlice";
+import { Toast } from "react-toastify/dist/components";
+import { toast } from "react-toastify";
+import useForm from "hooks/useForm";
 
 export default function Login() {
   const dispatch = useDispatch();
   const [isLoginMode, setIsLoginMode] = useState(false);
-  const initaliState = {
+
+//   const [formState, setFormState] = useState(initaliState)
+const {formState, onChageHandelr, resetForm} = useForm({
     id: "",
     password: "",
     nickname: "",
-  };
-  const [formState, setFormState] = useState(initaliState)
+  });
   const { id, password, nickname } = formState;
   // console.log("id", id);
   // console.log("password", password);
   // console.log("nickname", nickname);
-  const onChageHandelr = (event) => {
-    const { name, value } = event.target;
-    setFormState((prev) => ({ ...prev, [name]: value }));
-  };
+//   const onChageHandelr = (event) => {
+//     const { name, value } = event.target;
+//     setFormState((prev) => ({ ...prev, [name]: value }));
+//   };
 
   const onSubmitHandler = (event) => {
     event.preventDefalut();
     if (isLoginMode) {
       // 로그인처리
       dispatch(login());
-      alert("로그인 성공");
+    //   alert("로그인 성공");
+    toast.success("로그인 성공")
+    
     } else {
       // 회원가입
       setIsLoginMode(true);
-      setFormState(initaliState);
-      alert("회원가입 성공");
+      resetForm();
+    //   alert("회원가입 성공");
+      toast.success("회원가입 성공")
     }
   };
 
